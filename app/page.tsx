@@ -1,7 +1,15 @@
-import Ruleta from "@/components/Ruleta";
+import React, { lazy, Suspense } from "react";
+
+import dynamic from 'next/dynamic'
+
+const Ruleta = dynamic(() => import('../components/Ruleta'), {
+  ssr: false
+})
 
 export default function Page() {
   return (
-    <Ruleta />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Ruleta />
+    </Suspense>
   );
 }
