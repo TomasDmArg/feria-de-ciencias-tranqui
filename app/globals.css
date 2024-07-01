@@ -1,6 +1,16 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+  font-family: 'Satoshi', sans-serif;
+}
+
+button{
+  transition: all 0.1s ease-in-out;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
