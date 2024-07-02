@@ -17,22 +17,29 @@ export default function Ruleta() {
     const [result, setResult] = useState('');
 
     /**
+     * Obtiene el indice de los premios que coinciden con la opción
+     */
+    const getIndices = (option: string) => {
+        return PRIZES.reduce((indices, item, index) =>
+            item.option === option ? [...indices, index] : indices, [] as number[]);
+    } 
+
+    /**
      * Maneja el clic en el botón de girar
      */
     const handleSpinClick = () => {
         if (!mustSpin) {
+            let newPrizeNumber, indices: number[] = [];
             const randomNumber = Math.random();
-            let newPrizeNumber;
-
-            if (randomNumber < 0.7) {
-                const stickerIndices = PRIZES.reduce((indices, item, index) =>
-                    item.option === 'Sticker' ? [...indices, index] : indices, [] as number[]);
-                newPrizeNumber = stickerIndices[Math.floor(Math.random() * stickerIndices.length)];
+            if (randomNumber < 0.05) {
+                indices = getIndices('Llavero');
+            } else if (randomNumber < 0.6) {
+                indices = getIndices('Caramelo');
             } else {
-                const llaveroIndices = PRIZES.reduce((indices, item, index) =>
-                    item.option === 'Llavero' ? [...indices, index] : indices, [] as number[]);
-                newPrizeNumber = llaveroIndices[Math.floor(Math.random() * llaveroIndices.length)];
+                indices = getIndices('Sticker');
             }
+
+            newPrizeNumber = indices[Math.floor(Math.random() * indices.length)];
 
             if (typeof newPrizeNumber === 'number' && !isNaN(newPrizeNumber)) {
                 setPrizeNumber(newPrizeNumber);
@@ -86,7 +93,7 @@ export default function Ruleta() {
                     className="px-4 py-2 bg-[#45FFBD] text-[#11382A] font-bold hover:bg-[#00de8f] w-[300px] min-h-[57px] rounded-[24px] text-lg"
                     onClick={handleSpinClick}
                 >
-                    Probar suerte
+                    Girar
                 </button>
                 <button onClick={() => toggleModal('qr')}>
                     <QrCode01Icon color='#11382A' size={30} />
