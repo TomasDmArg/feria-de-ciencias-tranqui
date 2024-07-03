@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ showModal, toggleModal, modalContent, res
 
     return (
         <motion.div
-            className="fixed flex flex-col inset-0 bg-[#FFFDD1] backdrop-blur bg-opacity-70 items-center justify-center z-50 p-8 rounded-lg"
+            className="fixed flex flex-col inset-0 bg-[#FFFDD1] backdrop-blur bg-opacity-90 items-center justify-center z-50 p-8 rounded-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.1 }}

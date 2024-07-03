@@ -33,10 +33,8 @@ export default function Ruleta() {
             const randomNumber = Math.random();
             if (randomNumber < 0.05) {
                 indices = getIndices('Llavero');
-            } else if (randomNumber < 0.6) {
-                indices = getIndices('Caramelo');
             } else {
-                indices = getIndices('Sticker');
+                indices = getIndices('Caramelo');
             }
 
             newPrizeNumber = indices[Math.floor(Math.random() * indices.length)];
